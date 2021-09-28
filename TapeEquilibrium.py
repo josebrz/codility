@@ -41,9 +41,8 @@ N is an integer within the range [2..100,000];
 each element of array A is an integer within the range [−1,000..1,000].
 """
 
-
-
 a = [1, 2, 3, 4, 2]
+
 
 def solution(A):
     N = len(A)
@@ -51,7 +50,7 @@ def solution(A):
     top_list = {}
     for P in range(N):
         bottom_list[P + 1] = A[P] + bottom_list.get(P, 0)
-        top_list[P + 1]  = A[N - 1 - P] + top_list.get(P, 0)
+        top_list[P + 1] = A[N - 1 - P] + top_list.get(P, 0)
     result = None
     for key, value in bottom_list.items():
         if key != N:
@@ -63,5 +62,6 @@ def solution(A):
             elif diff <= result:
                 result = diff
     return result
+
 
 print(solution(a))
