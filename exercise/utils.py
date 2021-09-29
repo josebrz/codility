@@ -16,11 +16,12 @@ class ComputeTime:
         return f'Duration: {(datetime.now() - self.start_date).microseconds} microseconds'
 
 
-def build_list(size: int, range_values: tuple, distinct_values: bool = False):
+def build_list(size: int, range_values: tuple, distinct_values: bool = False, ordered: bool = False):
     """
     :param size: size of the resulting list
     :param range_values: range of values that make up the resulting list
     :param distinct_values: defines whether the function returns a list of distinct elements
+    :param ordered: define if the result matrix is ordered
     """
     if range_values[1] < range_values[0]:
         raise ValueError("The range of values provided must be in the format (minimum, maximum)")
@@ -39,5 +40,7 @@ def build_list(size: int, range_values: tuple, distinct_values: bool = False):
                 result_list.append(value)
         else:
             result_list.append(value)
+    if ordered:
+        result_list = sorted(result_list)
 
     return result_list
