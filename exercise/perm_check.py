@@ -45,3 +45,16 @@ N is an integer within the range [1..100,000];
 each element of array A is an integer within the range [1..1,000,000,000].
 """
 
+def solution(A):
+    map_a = {}
+    max_number = max(A)
+    for i in A: 
+        if map_a.get(i):
+            return 0
+        map_a[i] = True
+    if len(map_a) == max_number:
+        return 1
+    return 0
+
+
+print(solution([1,1]))
