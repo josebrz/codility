@@ -42,9 +42,12 @@ Write an efficient algorithm for the following assumptions:
 N and X are integers within the range [1..100,000];
 each element of array A is an integer within the range [1..X].
 """
+from utils.build_list import build_list
+from utils.compute_time import ComputeTime
 
 
 def solution(X, A):
+    time = ComputeTime()
     positions = []
     for _ in range(X):
         positions.append(0)
@@ -52,8 +55,12 @@ def solution(X, A):
         if positions[distance - 1] == 0:
             positions[distance - 1] = distance
         if not 0 in positions:
+            time.stop_time()
             return second
+    time.stop_time()
     return -1
 
 
-print(solution(5, [1, 3, 1, 4, 2, 3, 5, 4]))
+array = build_list(size=200, range_values=(1, 5))
+
+print(solution(5, array))
